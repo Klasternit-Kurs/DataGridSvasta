@@ -7,6 +7,22 @@
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
 	<DockPanel>
-		<DataGrid Name="dg"/>
+		<StackPanel DockPanel.Dock="Top">
+			<Button Content="Dugme" FontSize="24"/>
+			<ToggleButton Content="Toggle Dugme" FontSize="24"/>
+		</StackPanel>
+		<DataGrid Name="dg" AutoGenerateColumns="False" IsReadOnly="True">
+			<DataGrid.Columns>
+				<DataGridTextColumn Header="Naziv" Binding="{Binding Naziv}"/>
+				<DataGridTextColumn Header="Cena" Binding="{Binding Cena}"/>
+				<DataGridTemplateColumn Header="Moja kolona">
+					<DataGridTemplateColumn.CellTemplate>
+						<DataTemplate>
+							<ToggleButton Content="Nesto nesto" IsChecked="{Binding Selektovano, UpdateSourceTrigger=PropertyChanged}" Checked="Cekirano"/>
+						</DataTemplate>
+					</DataGridTemplateColumn.CellTemplate>
+				</DataGridTemplateColumn>
+			</DataGrid.Columns>
+		</DataGrid>
 	</DockPanel>
 </Window>

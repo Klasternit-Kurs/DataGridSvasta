@@ -6,6 +6,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Controls.Primitives;
 using System.Windows.Data;
 using System.Windows.Documents;
 using System.Windows.Input;
@@ -33,12 +34,23 @@ namespace DataGridSvasta
 
 			dg.ItemsSource = lstArt;
 		}
+
+		private void Cekirano(object sender, RoutedEventArgs e)
+		{
+			//ToggleButton tb = sender as ToggleButton;
+			//Artikal a = tb.DataContext as Artikal;
+
+			//Artikal a = (sender as ToggleButton).DataContext as Artikal;
+
+			lstArt.Remove((sender as ToggleButton).DataContext as Artikal);
+		}
 	}
 
 	public class Artikal
 	{
 		public string Naziv { get; set; }
 		public decimal Cena { get; set; }
+		public bool Selektovano { get; set; }
 
 		public Artikal(string n, decimal c)
 		{
