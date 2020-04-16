@@ -10,15 +10,26 @@
 		<StackPanel DockPanel.Dock="Top">
 			<Button Content="Dugme" FontSize="24"/>
 			<ToggleButton Content="Toggle Dugme" FontSize="24"/>
+			<StackPanel Orientation="Horizontal">
+				<Label Content="Cena: "/>
+				<TextBox Text="{Binding UnosCena}" Width="200"/>
+				<Button Content="Promeni cenu" Click="Promeni"/>
+			</StackPanel>
 		</StackPanel>
 		<DataGrid Name="dg" AutoGenerateColumns="False" IsReadOnly="True">
 			<DataGrid.Columns>
 				<DataGridTextColumn Header="Naziv" Binding="{Binding Naziv}"/>
-				<DataGridTextColumn Header="Cena" Binding="{Binding Cena}"/>
+				<DataGridTemplateColumn Header="Cena">
+					<DataGridTemplateColumn.CellTemplate>
+						<DataTemplate>
+							<ToggleButton Content="{Binding Cena}" Checked="Cekiran" Unchecked="Odcekiran"/>
+						</DataTemplate>
+					</DataGridTemplateColumn.CellTemplate>
+				</DataGridTemplateColumn>
 				<DataGridTemplateColumn Header="Moja kolona">
 					<DataGridTemplateColumn.CellTemplate>
 						<DataTemplate>
-							<ToggleButton Content="Nesto nesto" IsChecked="{Binding Selektovano, UpdateSourceTrigger=PropertyChanged}" Checked="Cekirano"/>
+							<Button Content="Brisanje" Click="Obrisi"/>
 						</DataTemplate>
 					</DataGridTemplateColumn.CellTemplate>
 				</DataGridTemplateColumn>
